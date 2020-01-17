@@ -1,6 +1,6 @@
 const express = require('express');
 
-const Actions = require('../data/helpers/actionModel.js')
+const Actions = require('../data/helpers/actionModel.js');
 
 const router = express.Router();
 
@@ -36,46 +36,18 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// POST // a new action
-// router.post('/:id/actions', (req, res) => {
-//     const { description, notes } = req.body; 
-//     const id = req.params.id;
+// POST // a new action to a project
+ router.post('/', (req, res) => {
+    const action = req.body;
 
-//     Actions.get(id)
-//        .then(projectId => {
-//            if (projectId.length === 0) {
-//                Response.status(404).json({ message: "The project with this ID does not exist"})
-//            }
-//        })
-
-//     if (!description || !notes) {
-//         res.status(400).json({ errorMessage: "Please provide the description and the notes for the action"})
-//     } else {
-//         Actions.insert({ project_id: id, description: description, notes: notes })
-//             .then(insertAction => {
-//                 res.status(201).json(insertAction)
-//             })
-//             .catch(error => {
-//                 res.status(500).json({ error: "There was an error adding the action to this project"})
-//             })
-//     }
-
-    // if (!description || !notes) {
-    //     res.status(400)
-    //         .json({ errorMessage: "Please provide the description and notes for the project." }) 
-    // } else {
-    //     Actions.insert(request.body)
-    //         .then(action => {
-    //         console.log(action);
-    //         res.status(201).json(action);
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    //         res.status(500)
-    //             .json({ error: "There was an error while saving the project to the database" })
-    //     });
-    // }
-// });
+    Actions.insert(action)
+          .then(action => {
+              res.status(200).json(action);
+          })
+          .catch(error => {
+              res.status(500).json({ errorMessage: "Could not add a new action"})
+          })
+ });
 
 // PUT //
 router.put('/:id',  (req, res) => {
