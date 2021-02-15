@@ -39,14 +39,27 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your Team Lead.
 
 - [ ] Mention two parts of Express that you learned about this week.
+Express is a Node.js web application framework that provides features for web and mobile applicaitons. Express.json allows the browser to parse data and return it as JSON.
+Express.use allows our routers to use different end points for a cleaner code.
 
 - [ ] Describe Middleware?
+Middleware adds extra functionality to our application, it provides a way to extend the features provided by the Express framework. There are 3 types of middleware:
+1. Build in, there is no need to install it, it's part of express. ex: (express.json).
+2. Third party which you need to npm install it, examples:
+   a. helmet
+   b. CORS
+   3. express-validator
+3. Custom middleware: we are the ones that build these.
 
 - [ ] Describe a Resource?
+A resource is data that is held in the back end of an application.
 
 - [ ] What can the API return to help clients know if a request was successful?
+a status code and a JSON message ex:
+res.status(200).json({message: "success"})
 
 - [ ] How can we partition our application into sub-applications?
+By making separate folders and files for router, for your server, for your api, etc.
 
 ## Minimum Viable Product
 
